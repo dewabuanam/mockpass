@@ -22,6 +22,7 @@
         <script src="/mockpass/resources/js/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="/mockpass/resources/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="/mockpass/resources/js/login-common.js"></script>
+            
     </head>
     <body>
         <div class="homepagebody-wrapper">
@@ -178,23 +179,83 @@
                                                             <input type="hidden" name="CSRFToken" value="null" />
                                                         </div>
                                                     </form>
+                                                    <br>
+                                                    <div class="login__footer">
+                                                        <div class="login-note">
+                                                            Forgot <a aria-label="Forgot MockPass ID">MockPass ID</a> or <a aria-label="Forgot password">password</a>?
+                                                        </div>
+                                                        <div class="sp-reglink">
+                                                            Don't have an account? <a aria-label="Register now">Register now</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="registerModalHorizontal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="homepageLogin modal-dialog">
+                                <div class="login-modal-content" style="overflow: visible">
+
+                                    <div class="login-form-body">
+                                        <span id="sp-mobile-tooltip" class="sp-mobile-tooltip ani-rotate">Click here to log in with MockPass Mobile app</span>
+                                        <ul class="final-login">
+                                            <li id="loginli" class="logintab active">
+                                                <a title="Login" aria-label="Login" data-toggle="tab" href="#sectionA"></a>
+                                            </li>
+                                            <li id="qrcodeloginli" class="qrtab">
+                                                <a title="MockPass Mobile" aria-label="MockPass Mobile"></a>
+                                            </li>
+                                        </ul>
+                                        <div class="white-area"></div>
+                                        <div class="tab-content">
+                                            <div id="sectionA" class="tab-pane fade in active">
+                                                <div class="innter-form">
+                                                    <form id="login" name="LoginForm" class="innate-form" method="post">
+                                                        <div id="LoginForm">
+                                                            <div class="login-label">Register</div>
+                                                            <br>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="CSRFToken" value="null" />
+                                                        </div>
+                                                    </form>
                                                     {{#customProfileConfig}}
-                                                    <form action="{{endpoint}}" class="innate-form" method="get">
-                                                        <br>
-                                                        <h6>or with your own user</h6>
-                                                        <br>
+                                                    <form action="{{registerEndpoint}}" class="innate-form" method="post">
 
                                                         <label for="nric">NRIC</label>
-                                                        <input type="text" name="nric" id="nric" value="S1234567A" minlength="9" maxlength="9">
+                                                        <input type="text" name="nric" id="nric" value="" placeholder="S1234567A" minlength="9" maxlength="9">
+                                                        <br>
+
+                                                        
+                                                        {{#showName}}
+                                                        <label for="name">Name</label>
+                                                        <input type="text" name="name" id="name" value="" placeholder="Name" minlength="1" maxlength="36">
+                                                        <br>
+                                                        {{/showName}}
+
+                                                        
+                                                        {{#showSingpass}}
+                                                        <label for="isSingpass">Singpass Holder?
+                                                        </label>
+                                                        <br>
+                                                        <input type="checkbox" name="isSingpass" id="isSingpass" value=false>
+                                                        <br>
+                                                        {{/showSingpass}}
 
                                                         {{#showUuid}}
                                                         <label for="uuid">UUID</label>
-                                                        <input type="text" name="uuid" id="uuid" value="ef39a074-b64d-4990-a937-6f80772e2bb8" minlength="36" maxlength="36">
+                                                        <input type="text" name="uuid" id="uuid" value="" placeholder="ef39a074-b64d-4990-a937-6f80772e2bb8" minlength="36" maxlength="36">
+                                                        <br>
                                                         {{/showUuid}}
 
                                                         {{#showUen}}
                                                         <label for="uen">UEN</label>
-                                                        <input type="text" name="uen" id="uen" value="123456789D" minlength="9" maxlength="10">
+                                                        <input type="text" name="uen" id="uen" value="" placeholder="123456789D" minlength="9" maxlength="10">
+                                                        <br>
                                                         {{/showUen}}
 
                                                         {{#assertEndpoint}}<input type="hidden" name="assertEndpoint" value="{{ assertEndpoint }}" />{{/assertEndpoint}}
@@ -203,7 +264,8 @@
                                                         {{#state}}<input type="hidden" name="state" value="{{ state }}" />{{/state}}
                                                         {{#nonce}}<input type="hidden" name="nonce" value="{{ nonce }}" />{{/nonce}}
 
-                                                        <button autofocus="" type="submit">Login</button>
+                                                        <br>
+                                                        <button autofocus="" type="submit">Register</button>
                                                         <br>
                                                     </form>
                                                     {{/customProfileConfig}}
@@ -233,7 +295,7 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><a class="thumbnail regsp-icon" title="Register for a MockPass account" aria-label="Register for a MockPass account"></a></div>
+                                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><a class="thumbnail regsp-icon" title="Register for a MockPass account" aria-label="Register for a MockPass account" data-toggle="modal" data-target="#registerModalHorizontal"></a></div>
                                 <div class="col-xs-4 col-sm-3 col-sm-3 col-lg-3"><a class="thumbnail updateAcctDetails-icon" title="Update your MockPass account details" aria-label="Update your MockPass account details" data-toggle="modal" data-target="#myModalHorizontal" ></a></div>
                                 <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><a class="thumbnail resetpwd-icon" title="Reset your MockPass password" aria-label="Reset your MockPass password"></a></div>
                                 <div class="hidden-xs col-sm-3 col-sm-3 col-lg-3"><a class="thumbnail setUp2Step2FA-icon" title="Set up your MockPass Two-Factor Authentication (2FA)" aria-label="Set up your MockPass Two-Factor Authentication (2FA)" data-toggle="modal" data-target="#myModalHorizontal"></a></div>
@@ -280,5 +342,119 @@
             </div>
             </div>
         </div>
+        <script>
+           document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
+                const nricInput = document.getElementById('nric');
+                const uenInput = document.getElementById('uen'); // Might be null if not present
+                let isDuplicateNric = false;
+                let isDuplicateUen = false;
+
+                const options = document.querySelectorAll('option');
+
+                options.forEach(option => {
+                    const text = option.textContent;
+
+                    // Extract NRIC from SingPass or CorpPass formats
+                    const singPassMatch = text.match(/\(([^)]+)\)\s*(?:\[MyInfo\])?/); // Matches "Name (NRIC) [MyInfo]" or "Name (NRIC)"
+                    const nricFromOption = singPassMatch ? singPassMatch[1] : null;
+
+                    // Check for duplicate NRIC
+                    if (nricFromOption === nricInput.value.trim()) {
+                        isDuplicateNric = true;
+                    }
+
+                    // Extract UEN from CorpPass format
+                    const corpPassMatch = text.match(/\/ UEN: (\w+)$/); // Matches "/ UEN: UEN"
+                    const uenFromOption = corpPassMatch ? corpPassMatch[1] : null;
+
+                    // Check for duplicate UEN
+                    if (uenInput && uenFromOption === uenInput.value.trim()) {
+                        isDuplicateUen = true;
+                    }
+                });
+
+                // Handle NRIC validation
+                if (nricInput.value.trim() === '') {
+                    nricInput.style.border = '2px solid red'; // Set red border on empty input
+                    if (!nricInput.nextElementSibling || !nricInput.nextElementSibling.classList.contains('warning')) {
+                        const warningMessage = document.createElement('span');
+                        warningMessage.className = 'warning';
+                        warningMessage.style.color = 'red';
+                        warningMessage.textContent = 'NRIC cannot be empty.';
+                        nricInput.parentNode.insertBefore(warningMessage, nricInput.nextSibling);
+                    }
+                    event.preventDefault(); // Prevent form submission
+                } else if (isDuplicateNric) {
+                    nricInput.style.border = '2px solid red'; // Set red border on duplicate
+                    if (!nricInput.nextElementSibling || !nricInput.nextElementSibling.classList.contains('warning')) {
+                        const warningMessage = document.createElement('span');
+                        warningMessage.className = 'warning';
+                        warningMessage.style.color = 'red';
+                        warningMessage.textContent = 'This NRIC already exists.';
+                        nricInput.parentNode.insertBefore(warningMessage, nricInput.nextSibling);
+                    }
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    nricInput.style.border = ''; // Remove red border if not duplicate
+                    if (nricInput.nextElementSibling && nricInput.nextElementSibling.classList.contains('warning')) {
+                        nricInput.nextElementSibling.remove(); // Remove warning message if exists
+                    }
+                }
+
+                // Handle UEN validation if the UEN field is displayed
+                if (uenInput) {
+                    if (uenInput.value.trim() === '') {
+                        uenInput.style.border = '2px solid red'; // Set red border on empty input
+                        if (!uenInput.nextElementSibling || !uenInput.nextElementSibling.classList.contains('warning')) {
+                            const warningMessage = document.createElement('span');
+                            warningMessage.className = 'warning';
+                            warningMessage.style.color = 'red';
+                            warningMessage.textContent = 'UEN cannot be empty.';
+                            uenInput.parentNode.insertBefore(warningMessage, uenInput.nextSibling);
+                        }
+                        event.preventDefault(); // Prevent form submission
+                    } else if (isDuplicateUen) {
+                        uenInput.style.border = '2px solid red'; // Set red border on duplicate
+                        if (!uenInput.nextElementSibling || !uenInput.nextElementSibling.classList.contains('warning')) {
+                            const warningMessage = document.createElement('span');
+                            warningMessage.className = 'warning';
+                            warningMessage.style.color = 'red';
+                            warningMessage.textContent = 'This UEN already exists.';
+                            uenInput.parentNode.insertBefore(warningMessage, uenInput.nextSibling);
+                        }
+                        event.preventDefault(); // Prevent form submission
+                    } else {
+                        uenInput.style.border = ''; // Remove red border if not duplicate
+                        if (uenInput.nextElementSibling && uenInput.nextElementSibling.classList.contains('warning')) {
+                            uenInput.nextElementSibling.remove(); // Remove warning message if exists
+                        }
+                    }
+                }
+            });
+
+            // Add event listeners to NRIC and UEN inputs for removing warnings on change
+            const nricInput = document.getElementById('nric');
+            const uenInput = document.getElementById('uen'); // Might be null if not present
+
+            nricInput.addEventListener('input', function() {
+                nricInput.style.border = ''; // Remove red border
+                if (nricInput.nextElementSibling && nricInput.nextElementSibling.classList.contains('warning')) {
+                    nricInput.nextElementSibling.remove(); // Remove warning message
+                }
+            });
+
+            if (uenInput) {
+                uenInput.addEventListener('input', function() {
+                    uenInput.style.border = ''; // Remove red border
+                    if (uenInput.nextElementSibling && uenInput.nextElementSibling.classList.contains('warning')) {
+                        uenInput.nextElementSibling.remove(); // Remove warning message
+                    }
+                });
+            }
+
+
+            </script>
+            
+            
     </body>
 </html>
