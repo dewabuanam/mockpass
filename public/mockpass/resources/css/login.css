@@ -1,0 +1,62 @@
+
+.overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.199), rgb(255, 255, 255)); /* Semi-transparent black overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+.login-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-header img {
+    max-width: 100%;
+}
+.form-control {
+    margin-bottom: 1rem;
+}
+.login-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.btn-primary {
+    background-color: #d9534f;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #c9302c;
+}
+.form-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+.form-text a:hover {
+    text-decoration: underline;
+}
+/* Change hover color to red */
+.nav-tabs .nav-link:hover {
+    background-color: #c9302c;
+    color: white;
+}
+
+/* Change the color of the non-selected tabs */
+.nav-tabs .nav-link {
+    background-color: #f3f3f3;
+    color: black;
+}
+
+/* Active tab style */
+.nav-tabs .nav-link.active {
+    background-color: #c9302c;
+    color: white;
+    border-color: #dee2e6 #dee2e6 white; /* Ensure it blends well with the content area */
+}
