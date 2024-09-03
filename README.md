@@ -1,6 +1,6 @@
-# MockPass
+# MockPass With JSON DB
 
-A mock Singpass/Corppass/Myinfo v3/sgID v2 server for dev purposes
+A mock Singpass/Corppass/Myinfo v3/sgID v2 server for dev purposes. Add JSON database for Singpass, Corppass, and MyInfo with registration capabilities
 
 ## Quick Start (hosted remotely on Gitpod)
 
