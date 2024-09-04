@@ -9,7 +9,7 @@ Preview:
 
 ## Quick Start (hosted remotely on Gitpod)
 
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/opengovsg/mockpass)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/dewabuanam/mockpass-with-json-db)
 
 - Click the ready-to-code badge above
 - Wait for MockPass to start
