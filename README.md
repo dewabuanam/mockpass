@@ -2,6 +2,11 @@
 
 A mock Singpass/Corppass/Myinfo v3/sgID v2 server for dev purposes. Add JSON database for Singpass, Corppass, and MyInfo with registration capabilities
 
+Preview:
+![image](https://github.com/user-attachments/assets/4f1617d0-40b0-4df0-a6fe-ac8cf05a442a)
+![image](https://github.com/user-attachments/assets/174039a9-6b0d-411c-a71a-ac27133e3d35)
+
+
 ## Quick Start (hosted remotely on Gitpod)
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/opengovsg/mockpass)
